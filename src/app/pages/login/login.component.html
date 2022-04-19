@@ -32,15 +32,15 @@
               <div class="form-title">
                 <h4 class="title">Sign In</h4>
               </div>
+
               <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="submit()">
-                <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').errors &&
-        (loginForm.get('email').dirty || loginForm.get('email').touched)">
-                Type in your email
+                <div *ngIf="errorLogin" class="alert alert-danger">
+                  <span *ngIf="errorLogin['email'][0]">{{ errorLogin['email'][0] }}</span>
                 </div>
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <input class="form-control" type="email" formControlName="email" placeholder="Email">
+                      <input required class="form-control" type="email" formControlName="email" placeholder="Email">
                     </div>
                   </div>
                   <div class="col-12">
