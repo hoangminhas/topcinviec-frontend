@@ -10,6 +10,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { JobListComponent } from './components/jobs/job-list/job-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MasterComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    JobListComponent
   ],
   imports: [
     BrowserModule,
