@@ -1,3 +1,4 @@
+import { JobDetailComponent } from './components/jobs/job-detail/job-detail.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MasterComponent} from './layouts/master/master.component';
@@ -10,12 +11,20 @@ const routes: Routes = [
   {
     path: '',
     component: MasterComponent,
-    children: [
-      {
-        path: 'jobs',
-        component: JobListComponent
-      }
-    ]
+    // children: [
+    //   {
+    //     path: 'jobs-list',
+    //     component: JobListComponent
+    //   },
+    // ]
+  },
+  {
+    path: 'jobs-list',
+    component: JobListComponent
+  },
+  {
+    path: 'job-detail/:id',
+    component: JobDetailComponent
   },
   {
     path: 'login',
