@@ -15,6 +15,7 @@ id = this.route.snapshot.paramMap.get('id');
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getDetail(this.id)
   }
 
   getDetail(id){
