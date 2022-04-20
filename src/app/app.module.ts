@@ -12,7 +12,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { JobListComponent } from './components/jobs/job-list/job-list.component';
 import { JobDetailComponent } from './components/jobs/job-detail/job-detail.component';
-
 @NgModule({
   declarations: [
     AppComponent,
