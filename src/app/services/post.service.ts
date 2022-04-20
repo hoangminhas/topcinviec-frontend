@@ -14,6 +14,6 @@ export class PostService {
   }
 
   getById(id):Observable<any> {
-    return this.http.get(environment.api_url + `posts/${id}`)
+    return this.http.get(environment.api_url + `posts/${id}/detail`);
   }
 }

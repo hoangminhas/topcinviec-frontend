@@ -19,11 +19,11 @@ const routes: Routes = [
     // ]
   },
   {
-    path: 'jobs-list',
+    path: 'jobs',
     component: JobListComponent
   },
   {
-    path: 'job-detail/:id',
+    path: 'jobs/:id/job-detail',
     component: JobDetailComponent
   },
   {
