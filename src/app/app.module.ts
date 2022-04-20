@@ -13,6 +13,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { JobListComponent } from './components/jobs/job-list/job-list.component';
 import { JobDetailComponent } from './components/jobs/job-detail/job-detail.component';
 import { RecruiterDetailComponent } from './components/recruiters/recruiter-detail/recruiter-detail.component';
+import { ConfirmEqualValidatorDirective } from './confirm-equal-validator.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ import { RecruiterDetailComponent } from './components/recruiters/recruiter-deta
     JobListComponent,
     JobDetailComponent,
     RecruiterDetailComponent
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,

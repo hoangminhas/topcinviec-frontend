@@ -34,84 +34,88 @@
               </div>
               <ul class="nav nav-pills" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="candidate-tab" data-bs-toggle="pill" data-bs-target="#candidate" type="button" role="tab" aria-controls="candidate" aria-selected="true"><i class="icofont-businessman"></i> Candidate</button>
+                  <button class="nav-link active" (click)="setRole(2)" id="candidate-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="candidate" aria-selected="true"><i class="icofont-businessman"></i> Candidate</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="employer-tab" data-bs-toggle="pill" data-bs-target="#employer" type="button" role="tab" aria-controls="employer" aria-selected="false"><i class="icofont-bag-alt"></i> Employer</button>
+                  <button class="nav-link" id="employer-tab" (click)="setRole(3)" data-bs-toggle="pill" type="button" role="tab" aria-controls="employer" aria-selected="false"><i class="icofont-bag-alt"></i> Employer</button>
                 </li>
               </ul>
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="candidate" role="tabpanel" aria-labelledby="candidate-tab">
-<!--                  <form action="#">-->
-<!--                    <div class="row">-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <input class="form-control" type="email" placeholder="Email">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <input class="form-control" type="password" placeholder="Password">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <input class="form-control" type="password" placeholder="Confirm Password">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <div class="remember-forgot-info">-->
-<!--                            <div class="remember">-->
-<!--                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">-->
-<!--                              <label class="form-check-label" for="defaultCheck1">Accept our terms and conditions and privacy policy.</label>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <button type="button" class="btn-theme">Register Now</button>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-                </div>
-                <div class="tab-pane fade" id="employer" role="tabpanel" aria-labelledby="employer-tab">
-<!--                  <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="submit()">-->
-<!--                    <div class="row">-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <input class="form-control" type="email" placeholder="Email">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <input class="form-control" type="password" placeholder="Password">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <input class="form-control" type="password" placeholder="Confirm Password">-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <div class="remember-forgot-info">-->
-<!--                            <div class="remember">-->
-<!--                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">-->
-<!--                              <label class="form-check-label" for="defaultCheck1">Accept our terms and conditions and privacy policy.</label>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <button type="button" class="btn-theme">Register Now</button>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
+                  <form id="candidate" *ngIf="registerForm" [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <input class="form-control" formControlName="name" type="text" placeholder="Name*"
+                                 [ngClass]="{'is-invalid': submitted && fval.name.errors}">
+                          <div *ngIf="submitted && fval.name.errors" class="invalid-feedback">
+                            <div *ngIf="fval.name.errors.required">
+                              Name is required and must be a valid name
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <input class="form-control" formControlName="email" type="email" placeholder="Email*"
+                                 [ngClass]="{'is-invalid': submitted && fval.email.errors}">
+                          <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                            <div *ngIf="fval.email.errors.required">Email is required</div>
+                            <div *ngIf="fval.email.errors.email">Enter a valid email address</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <input class="form-control" formControlName="password" type="password" placeholder="Password*"
+                                 [ngClass]="{'is-invalid': submitted && fval.password.errors}">
+                          <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+                            <div *ngIf="fval.password.errors.required">Password is required</div>
+                            <div *ngIf="fval.password.errors.minlength">Password must be at least 6 characters</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <input class="form-control" formControlName="confirmPassword" type="password" placeholder="Confirm Password*"
+                                 [ngClass]="{'is-invalid': submitted && fval.confirmPassword.errors}" appConfirmEqualValidator="password">
+                          <div *ngIf="submitted && fval.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="fval.confirmPassword.errors.required">Confirm Password is required</div>
+                            <div *ngIf="fval.confirmPassword.errors?.notEqual">Password Unmatch</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <input class="form-control" formControlName="phone" type="text" placeholder="Phone*"
+                                 maxlength="12" minlength="10" [ngClass]="{'is-invalid': submitted && fval.phone.invalid}" required>
+                          <div *ngIf="submitted && fval.phone.errors" class="invalid-feedback">
+                            <div *ngIf="fval.phone.errors.required">Phone is required</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <input class="form-control" formControlName="role_id" hidden>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <div class="remember-forgot-info">
+                            <div class="remember">
+                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                              <label class="form-check-label" for="defaultCheck1">Accept our terms and conditions and privacy policy.</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <button type="submit" class="btn-theme">Register Now</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
               <div class="login-register-form-info">
