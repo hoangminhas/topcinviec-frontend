@@ -38,12 +38,12 @@
               </div>
               <div class="content">
                 <h4 class="name"><a href="#">{{post.name}}.</a></h4>
-                <p class="address">New York, USA</p>
+                <p class="address">{{post.address_detail}}</p>
               </div>  
             </div>
                 <div class="main-content">
               <h3 class="title"><a routerLink="{{post.id}}/job-detail">{{post.title}}</a></h3>
-              <h5 class="work-type">Full-time</h5>
+              <!-- <h5 class="work-type">Full-time</h5> -->
               <ul>
                 <li>Job Type: {{post.job_type}}</li>
                 <li>Quantity: {{post.quantity}} People</li>

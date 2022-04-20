@@ -1,3 +1,4 @@
+import { RecruiterDetailComponent } from './components/recruiters/recruiter-detail/recruiter-detail.component';
 import { JobDetailComponent } from './components/jobs/job-detail/job-detail.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'jobs/:id/job-detail',
     component: JobDetailComponent
+  },
+  {
+    path: 'recruiters-detail/:id',
+    component: RecruiterDetailComponent
   },
   {
     path: 'login',
