@@ -21,7 +21,7 @@ export class JobListComponent implements OnInit {
     this.postService.getAll().subscribe((res) => {
       if (res.success === true) {
         this.posts = res.data;
-        console.log('123',this.posts)
+        // console.log('123',this.posts)
       } else {
         console.log(res.msg);
       }

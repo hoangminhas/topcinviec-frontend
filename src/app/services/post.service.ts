@@ -13,6 +13,8 @@ export class PostService {
     return this.http.get<any>(environment.api_url + "posts" );
   }
 
+  
+
   getById(id):Observable<any> {
     return this.http.get(environment.api_url + `posts/${id}/detail`);
   }
